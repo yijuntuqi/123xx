@@ -1,0 +1,20 @@
+{
+  "name": "ai-learning-hub",
+  "version": "1.0.0",
+  "description": "AI Learning Hub - 展示AI学习成果的个人网站",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js"
+  },
+  "keywords": ["ai", "machine-learning", "portfolio"],
+  "author": "yijuntuqi",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "axios": "^1.16.1",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1"
+  }
+}

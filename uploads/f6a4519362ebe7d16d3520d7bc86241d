@@ -1,0 +1,201 @@
+﻿n,r,m
+(:Experiment {name: 观察叶绿体实验}),[:USES_INSTRUMENT],(:Instrument {name: 载玻片})
+(:Experiment {name: 观察叶绿体实验}),[:USES_INSTRUMENT],(:Instrument {name: 盖玻片})
+(:Experiment {name: 观察叶绿体实验}),[:USES_INSTRUMENT],(:Instrument {name: 镊子})
+(:Experiment {name: 观察叶绿体实验}),[:USES_INSTRUMENT],(:Instrument {name: 滴管})
+(:Experiment {name: 观察叶绿体实验}),[:USES_INSTRUMENT],(:Instrument {name: 显微镜})
+(:Experiment {name: 观察叶绿体实验}),[:USES_INSTRUMENT],(:Instrument {name: 烧杯})
+(:Experiment {name: 观察叶绿体实验}),[:USES_INSTRUMENT],(:Instrument {name: 叶绿体})
+(:Experiment {name: 观察叶绿体实验}),[:HAS_PURPOSE],(:Purpose {description: 通过显微镜观察绿色植物叶片中的叶绿体，初步认识叶绿体的形态结构。掌握显微镜的使用方法和装片的制作方法。})
+(:Experiment {name: 观察叶绿体实验}),[:HAS_STEP],"(:Step {number: 1,description: 擦拭载玻片})"
+(:Experiment {name: 观察叶绿体实验}),[:HAS_STEP],"(:Step {number: 2,description: 擦拭盖玻片})"
+(:Experiment {name: 观察叶绿体实验}),[:HAS_STEP],"(:Step {number: 3,description: 往载玻片中央滴加清水})"
+(:Experiment {name: 观察叶绿体实验}),[:HAS_STEP],"(:Step {number: 4,description: 用镊子夹住所取的菠菜叶下表皮，放入水滴中，盖上盖玻片})"
+(:Experiment {name: 观察叶绿体实验}),[:HAS_STEP],"(:Step {number: 5,description: 调节粗准焦螺旋})"
+(:Experiment {name: 观察叶绿体实验}),[:HAS_STEP],"(:Step {number: 6,description: 调节细准焦螺旋})"
+(:Experiment {name: 观察叶绿体实验}),[:HAS_STEP],"(:Step {number: 7,description: 清洁、整理实验用具和实验台})"
+(:Experiment {name: 观察叶绿体实验}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 镊子取载玻片})
+(:Experiment {name: 观察叶绿体实验}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 镊子取盖玻片})
+(:Experiment {name: 观察叶绿体实验}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 镊子取叶绿体})
+(:Experiment {name: 观察叶绿体实验}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 擦拭载玻片})
+(:Experiment {name: 观察叶绿体实验}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 擦拭盖玻片})
+(:Experiment {name: 观察叶绿体实验}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 滴管滴加清水})
+(:Experiment {name: 观察叶绿体实验}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 用镊子盖上盖玻片})
+(:Experiment {name: 观察叶绿体实验}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 调节粗准焦螺旋})
+(:Experiment {name: 观察叶绿体实验}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 调节细准焦螺旋})
+(:Experiment {name: 观察叶绿体实验}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 将载玻片放置载物台})
+(:Experiment {name: 观察叶绿体实验}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 移动白色纱布})
+(:Experiment {name: 观察叶绿体实验}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 盛放叶绿体的烧杯放置原位附近})
+(:Experiment {name: 观察叶绿体实验}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 镊子放置在实验托盘内})
+(:Experiment {name: 观察叶绿体实验}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 用抹布擦拭试验台})
+(:Experiment {name: 模拟呼吸作用实验}),[:USES_INSTRUMENT],(:Instrument {name: 气球})
+(:Experiment {name: 模拟呼吸作用实验}),[:USES_INSTRUMENT],(:Instrument {name: 吸管})
+(:Experiment {name: 模拟呼吸作用实验}),[:USES_INSTRUMENT],(:Instrument {name: 膈肌运动模拟器})
+(:Experiment {name: 模拟呼吸作用实验}),[:HAS_PURPOSE],(:Purpose {description: 1.探究胸腔的容积变化与呼吸作用的关系；2.理解吸气和呼气过程中胸腔压力变化对空气流动的影响；3.模拟人体呼吸系统的结构和功能，加深对呼吸系统工作原理的理解。})
+(:Experiment {name: 模拟呼吸作用实验}),[:HAS_STEP],"(:Step {number: 1,description: 在膈肌运动模拟器上安装橡皮塞，确保密封})"
+(:Experiment {name: 模拟呼吸作用实验}),[:HAS_STEP],"(:Step {number: 2,description: 将两根吸管分别穿过橡皮塞，并将每根吸管的内端连接一个气球，气球用橡皮筋牢固固定在吸管上})"
+(:Experiment {name: 模拟呼吸作用实验}),[:HAS_STEP],"(:Step {number: 3,description: 调整吸管和气球的位置，确保两个气球位于模拟器的腔体内，形成“肺部”})"
+(:Experiment {name: 模拟呼吸作用实验}),[:HAS_STEP],"(:Step {number: 4,description: 模拟吸气过程})"
+(:Experiment {name: 模拟呼吸作用实验}),[:HAS_STEP],"(:Step {number: 5,description: 模拟呼气过程})"
+(:Experiment {name: 模拟呼吸作用实验}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 连接吸管和一个气球})
+(:Experiment {name: 模拟呼吸作用实验}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 将吸管穿过橡皮塞，并调整到合适长度，确保气球完全位于模拟器腔体内部})
+(:Experiment {name: 模拟呼吸作用实验}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 安装橡皮塞})
+(:Experiment {name: 模拟呼吸作用实验}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 密封膈肌运动模拟器})
+(:Experiment {name: 模拟呼吸作用实验}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 手握膈肌运动模拟器的拉杆，将模拟膈肌缓慢向下拉动})
+(:Experiment {name: 模拟呼吸作用实验}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 手握膈肌运动模拟器的推杆，将模拟膈肌推回至原位})
+(:Experiment {name: 模拟呼吸作用实验}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 拆下底部密封装置})
+(:Experiment {name: 模拟呼吸作用实验}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 拆下吸管})
+(:Experiment {name: 模拟呼吸作用实验}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 拆下气球})
+(:Experiment {name: 模拟呼吸作用实验}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 拆下橡皮塞})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 载玻片})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 盖玻片})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 镊子})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 洋葱鳞片叶})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 装有清水的滴瓶})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 装有生理盐水的滴瓶})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 装有清水的大烧杯})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 解剖针})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 碘液})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 刀片})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 纱布})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 吸水纸})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 抹布})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 废料槽})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:HAS_PURPOSE],(:Purpose {description: 1.掌握显微镜使用方法 2.制作植物细胞临时装片 3.认识植物细胞的基本结构 4.绘制植物细胞结构模式图})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:HAS_STEP],"(:Step {number: 1,description: 用洁净的纱布将载玻片和盖玻片擦拭干净})"
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:HAS_STEP],"(:Step {number: 2,description: 取装有清水的滴瓶在载玻片中央滴一滴清水})"
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:HAS_STEP],"(:Step {number: 3,description: 用刀片在洋葱内表皮划一个“井”字，用镊子撕取大小合适的洋葱鳞片叶内表皮})"
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:HAS_STEP],"(:Step {number: 4,description: 将撕取下的洋葱内表皮浸入载玻片上的水滴中，并用镊子展平})"
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:HAS_STEP],"(:Step {number: 5,description: 用镊子夹起盖玻片一端，使盖玻片的一边先接触载玻片上的水滴})"
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:HAS_STEP],"(:Step {number: 6,description: 缓缓放下盖玻片，使盖玻片上不会出现气泡})"
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:HAS_STEP],"(:Step {number: 7,description: 把一滴碘液滴在盖玻片的一侧})"
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:HAS_STEP],"(:Step {number: 8,description: 用吸水纸从盖玻片另一侧吸引，保证碘液浸润整个标本，制成临时装片})"
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 用洁净的纱布擦拭载玻片})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 用洁净的纱布擦拭盖玻片})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 拿起装有清水的滴瓶})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 在载玻片中央滴一滴清水})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 拿起刀片})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 在洋葱内表皮划一个“井”字})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 用镊子撕取大小合适的洋葱鳞片叶内表皮})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 将撕取下的洋葱内表皮浸入载玻片上的水滴中})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 用镊子展平洋葱内表皮})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 用镊子夹起盖玻片的一端})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 将盖玻片的一边先接触载玻片上的水滴})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 缓缓放下盖玻片，确保不会出现气泡})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 在盖玻片的一侧滴加一滴碘液})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 用吸水纸从盖玻片另一侧吸引碘液})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 确保碘液浸润整个标本})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 正确输入系统回答：制作装片和染色需滴加的液体分别是清水、碘液})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 将临时装片放入装有清水的大烧杯中})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 整理实验器材并清洁桌面})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 举手示意实验完毕})
+(:Experiment {name: 制作洋葱鳞片叶内表皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 确认分数并签名（或在系统正确提交电子实验记录卡）})
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 载玻片})
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 盖玻片})
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 镊子})
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 装有清水的滴瓶})
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 装有生理盐水的滴瓶})
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 装有清水的大烧杯})
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 解剖针})
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 碘液})
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 刀片})
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 纱布})
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 成熟的番茄})
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 培养皿})
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:HAS_PURPOSE],(:Purpose {description: 1.学习制作番茄果肉细胞临时装片。2.认识植物细胞的基本结构。3.练习绘制植物细胞结构简图。})
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:HAS_STEP],"(:Step {number: 1,description: 用洁净的纱布将载玻片擦拭干净后置于桌面})"
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:HAS_STEP],"(:Step {number: 2,description: 用同样方法擦拭干净盖玻片后置于载玻片一角})"
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:HAS_STEP],"(:Step {number: 3,description: 取装有清水的滴瓶在载玻片中央滴一滴清水})"
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:HAS_STEP],"(:Step {number: 4,description: 用解剖针挑取番茄果肉放入载玻片的水滴中})"
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:HAS_STEP],"(:Step {number: 5,description: 用解剖针将挑取的果肉均匀涂抹在水滴中})"
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:HAS_STEP],"(:Step {number: 6,description: 用镊子夹起盖玻片一端})"
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:HAS_STEP],"(:Step {number: 7,description: 使盖玻片的一边先接触载玻片上的水滴})"
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:HAS_STEP],"(:Step {number: 8,description: 缓缓放下盖玻片，避免盖玻片上出现气泡})"
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 用洁净的纱布擦拭载玻片})
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 用洁净的纱布擦拭盖玻片})
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 拿起装有清水的滴瓶})
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 在载玻片中央滴一滴清水})
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 用解剖针挑取番茄果肉})
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 将挑取的番茄果肉放入载玻片的水滴中})
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 用解剖针将果肉均匀涂抹在水滴中})
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 用镊子夹起盖玻片的一端})
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 使盖玻片的一边先接触载玻片上的水滴})
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 缓缓放下盖玻片，避免盖玻片上出现气泡})
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 正确输入系统回答：“将挑有番茄果肉的解剖针在清水内反复涂抹的原因是避免细胞重叠”})
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 将临时装片放入装有清水的大烧杯中})
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 整理实验器材并清洁桌面})
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 举手示意实验完毕})
+(:Experiment {name: 制作番茄果肉细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 确认分数并签名（或在系统正确提交电子实验记录卡）})
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 载玻片})
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 盖玻片})
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 镊子})
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 装有清水的滴瓶})
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 装有生理盐水的滴瓶})
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 装有清水的大烧杯})
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 解剖针})
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 碘液})
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 刀片})
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 纱布})
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 吸水纸})
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 一次性漱口杯})
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 消毒牙签})
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:USES_INSTRUMENT],(:Instrument {name: 生理盐水})
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:HAS_PURPOSE],(:Purpose {description: 1.通过实验学习制作和观察人的口腔上皮细胞的临时装片，认识人的口腔上皮细胞的基本结构。2.通过实验使学生学会制作并观察人的口腔上皮细胞临时装片以及进一步练习画细胞结构图的技能。3.通过比较动植物细胞结构上的不同点培养学生观察能力、总结归纳能力、逻辑思维能力和知识的应用能力。4.认同细胞是生命活动的基本单位。5.学习并掌握死活细胞的鉴别方法。})
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:HAS_STEP],"(:Step {number: 1,description: 用洁净的纱布将载玻片和盖玻片擦拭干净})"
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:HAS_STEP],"(:Step {number: 2,description: 取装有生理盐水的滴瓶在载玻片中央滴一滴生理盐水})"
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:HAS_STEP],"(:Step {number: 3,description: 用一次性漱口杯中的凉开水漱净口腔，用消毒牙签在口腔内侧轻刮几下})"
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:HAS_STEP],"(:Step {number: 4,description: 把牙签上粘有口腔上皮细胞碎屑的一端在生理盐水中涂抹均匀})"
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:HAS_STEP],"(:Step {number: 5,description: 用镊子夹起盖玻片一端，使盖玻片的一边先接触载玻片上的液滴})"
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:HAS_STEP],"(:Step {number: 6,description: 缓缓放下盖玻片，避免盖玻片上出现气泡})"
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:HAS_STEP],"(:Step {number: 7,description: 把碘液滴在盖玻片的一侧})"
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:HAS_STEP],"(:Step {number: 8,description: 用吸水纸从另一侧吸引，使碘液浸润标本的全部，制成临时装片})"
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 用洁净的纱布将载玻片擦拭干净})
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 用洁净的纱布将盖玻片擦拭干净})
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 取装有生理盐水的滴瓶})
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 在载玻片中央滴一滴生理盐水})
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 用一次性漱口杯中的凉开水漱净口腔})
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 用消毒牙签在口腔内侧轻刮几下，收集口腔上皮细胞碎屑})
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 用牙签将口腔上皮细胞碎屑涂抹均匀在载玻片上的生理盐水中})
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 用镊子夹起盖玻片的一端})
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 使盖玻片的一边先接触载玻片上的液滴})
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 缓缓放下盖玻片，避免盖玻片上出现气泡})
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 将碘液滴在盖玻片的一侧})
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 用吸水纸从盖玻片另一侧吸引，使碘液浸润标本的全部})
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 在系统中输入正确的实验回答：“滴加生理盐水的目的是保持细胞形态”})
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 将临时装片放入装有清水的大烧杯中})
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 整理实验器材并清洁桌面})
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 举手示意实验完毕})
+(:Experiment {name: 制作人的口腔上皮细胞临时装片}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 确认分数并签名（或在系统正确提交电子实验记录卡）})
+(:Experiment {name: 观察人体的基本组织}),[:USES_INSTRUMENT],(:Instrument {name: 显微镜})
+(:Experiment {name: 观察人体的基本组织}),[:USES_INSTRUMENT],(:Instrument {name: 骨骼肌永久切片})
+(:Experiment {name: 观察人体的基本组织}),[:USES_INSTRUMENT],(:Instrument {name: 植物永久切片})
+(:Experiment {name: 观察人体的基本组织}),[:USES_INSTRUMENT],(:Instrument {name: 擦镜纸})
+(:Experiment {name: 观察人体的基本组织}),[:HAS_PURPOSE],(:Purpose {description: 1.观察人体基本组织的永久切片，认识人体的四种基本组织；2.根据观察，概述组织的共同特点，形成组织的概念。})
+(:Experiment {name: 观察人体的基本组织}),[:HAS_STEP],"(:Step {number: 1,description: 选用骨骼肌永久切片})"
+(:Experiment {name: 观察人体的基本组织}),[:HAS_STEP],"(:Step {number: 2,description: 选用显微镜})"
+(:Experiment {name: 观察人体的基本组织}),[:HAS_STEP],"(:Step {number: 3,description: 转动转换器，使低倍物镜对准通光孔})"
+(:Experiment {name: 观察人体的基本组织}),[:HAS_STEP],"(:Step {number: 4,description: 通过目镜或显示屏看到明亮的视野})"
+(:Experiment {name: 观察人体的基本组织}),[:HAS_STEP],"(:Step {number: 5,description: 把切片固定在载物台上并正对通光孔})"
+(:Experiment {name: 观察人体的基本组织}),[:HAS_STEP],"(:Step {number: 6,description: 转动粗准焦螺旋，使镜筒缓慢下降直至物镜接近切片为止})"
+(:Experiment {name: 观察人体的基本组织}),[:HAS_STEP],"(:Step {number: 7,description: 正确调焦，能看到清晰的物像})"
+(:Experiment {name: 观察人体的基本组织}),[:HAS_STEP],"(:Step {number: 8,description: 正确汇报(或截图并输入系统)该骨骼肌永久切片的组织形态是有明显的横纹})"
+(:Experiment {name: 观察人体的基本组织}),[:HAS_STEP],"(:Step {number: 9,description: 说明：数码显微镜考生由监考老师查看屏幕图像，单双筒显微镜考生由监考教师检查结果(可借助显微镜手机支架辅助观察)})"
+(:Experiment {name: 观察人体的基本组织}),[:HAS_STEP],"(:Step {number: 10,description: 实验结束后，将切片取下，复原显微镜，将实验用品放回原处})"
+(:Experiment {name: 观察人体的基本组织}),[:HAS_STEP],"(:Step {number: 11,description: 举手示意实验完毕，确认分数并签名(或在系统正确提交电子实验记录卡)})"
+(:Experiment {name: 观察人体的基本组织}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 确认并选用骨骼肌永久切片（确认不是植物永久切片）})
+(:Experiment {name: 观察人体的基本组织}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 确认并选用显微镜（确认不是放大镜）})
+(:Experiment {name: 观察人体的基本组织}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 转动显微镜转换器，使低倍物镜对准通光孔})
+(:Experiment {name: 观察人体的基本组织}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 观察目镜或显示屏，确保视野明亮})
+(:Experiment {name: 观察人体的基本组织}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 将骨骼肌永久切片固定在载物台上})
+(:Experiment {name: 观察人体的基本组织}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 调整切片位置，使其正对通光孔})
+(:Experiment {name: 观察人体的基本组织}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 转动粗准焦螺旋，使镜筒缓慢下降，直至物镜接近切片为止})
+(:Experiment {name: 观察人体的基本组织}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 调节细准焦螺旋，直至视野中出现清晰的物像})
+(:Experiment {name: 观察人体的基本组织}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 通过显微镜观察骨骼肌永久切片的组织形态})
+(:Experiment {name: 观察人体的基本组织}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 确认切片的组织形态为“有明显的横纹”})
+(:Experiment {name: 观察人体的基本组织}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 正确汇报观察结果（或截图并输入系统中）})
+(:Experiment {name: 观察人体的基本组织}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 如需，使用显微镜手机支架辅助观察})
+(:Experiment {name: 观察人体的基本组织}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 将骨骼肌切片从载物台上取下})
+(:Experiment {name: 观察人体的基本组织}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 将显微镜调整至初始状态，复原镜筒和物镜位置})
+(:Experiment {name: 观察人体的基本组织}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 将实验用品归还至指定位置})
+(:Experiment {name: 观察人体的基本组织}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 举手示意实验完成})
+(:Experiment {name: 观察人体的基本组织}),[:HAS_ATOMIC_ACTION],(:AtomicAction {description: 确认实验分数并签名（或在系统中提交电子实验记录卡）})

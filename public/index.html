@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI数据分析师 - 你的专属数据科学家</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -14,13 +17,8 @@
             min-height: 100vh;
         }
         
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
         
-        /* 头部 */
         header {
             text-align: center;
             padding: 30px 0;
@@ -36,12 +34,8 @@
             margin-bottom: 10px;
         }
         
-        header p {
-            color: #888;
-            font-size: 1.1em;
-        }
+        header p { color: #888; font-size: 1.1em; }
         
-        /* 主布局 */
         .main-layout {
             display: grid;
             grid-template-columns: 250px 1fr 350px;
@@ -49,7 +43,6 @@
             min-height: calc(100vh - 200px);
         }
         
-        /* 卡片样式 */
         .card {
             background: #1a1a2e;
             border-radius: 15px;
@@ -61,19 +54,14 @@
             color: #667eea;
             margin-bottom: 15px;
             font-size: 1.2em;
-        }
-        
-        /* 左侧边栏 */
-        .sidebar-left {
             display: flex;
-            flex-direction: column;
-            gap: 15px;
+            align-items: center;
+            gap: 8px;
         }
         
-        .file-list {
-            max-height: 300px;
-            overflow-y: auto;
-        }
+        .sidebar-left { display: flex; flex-direction: column; gap: 15px; }
+        
+        .file-list { max-height: 300px; overflow-y: auto; }
         
         .file-item {
             padding: 10px;
@@ -83,17 +71,24 @@
             cursor: pointer;
             transition: all 0.3s;
             font-size: 0.9em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
-        .file-item:hover {
-            background: #1a1a4e;
-            border-left: 3px solid #667eea;
+        .file-item:hover { background: #1a1a4e; border-left: 3px solid #667eea; }
+        .file-item.active { background: #1a1a4e; border-left: 3px solid #667eea; }
+        
+        .file-item .delete-btn {
+            color: #e74c3c;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 1.2em;
+            padding: 0 5px;
         }
         
-        .file-item.active {
-            background: #1a1a4e;
-            border-left: 3px solid #667eea;
-        }
+        .file-item:hover .delete-btn { opacity: 1; }
         
         .upload-btn {
             width: 100%;
@@ -107,15 +102,9 @@
             transition: opacity 0.3s;
         }
         
-        .upload-btn:hover {
-            opacity: 0.9;
-        }
+        .upload-btn:hover { opacity: 0.9; }
         
-        /* 中间聊天区 */
-        .chat-area {
-            display: flex;
-            flex-direction: column;
-        }
+        .chat-area { display: flex; flex-direction: column; }
         
         .chat-messages {
             flex: 1;
@@ -124,7 +113,7 @@
             background: #16213e;
             border-radius: 10px;
             margin-bottom: 15px;
-            max-height: 500px;
+            max-height: 450px;
         }
         
         .message {
@@ -133,26 +122,37 @@
             border-radius: 12px;
             max-width: 85%;
             word-wrap: break-word;
-            line-height: 1.5;
+            line-height: 1.6;
+            position: relative;
         }
         
-        .user-message {
+        .user-message { background: #667eea; color: white; margin-left: auto; }
+        .ai-message { background: #1a1a2e; border: 1px solid #2a2a4a; margin-right: auto; white-space: pre-wrap; }
+        
+        .message .msg-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .msg-action-btn {
+            padding: 4px 10px;
+            background: rgba(102, 126, 234, 0.3);
+            border: 1px solid #667eea;
+            color: #667eea;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 0.75em;
+            transition: all 0.3s;
+        }
+        
+        .msg-action-btn:hover {
             background: #667eea;
             color: white;
-            margin-left: auto;
         }
         
-        .ai-message {
-            background: #1a1a2e;
-            border: 1px solid #2a2a4a;
-            margin-right: auto;
-            white-space: pre-wrap;
-        }
-        
-        .chat-input-area {
-            display: flex;
-            gap: 10px;
-        }
+        .chat-input-area { display: flex; gap: 10px; }
         
         .chat-input-area input {
             flex: 1;
@@ -192,25 +192,35 @@
             transition: all 0.3s;
         }
         
-        .quick-action:hover {
+        .quick-action:hover { background: #667eea; color: white; border-color: #667eea; }
+        
+        .sidebar-right { display: flex; flex-direction: column; gap: 15px; }
+        
+        .chart-container { min-height: 280px; position: relative; }
+        .chart-container canvas { max-height: 280px; }
+        
+        .chart-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .chart-action-btn {
+            padding: 6px 12px;
+            background: #16213e;
+            border: 1px solid #2a2a4a;
+            color: #888;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.75em;
+            transition: all 0.3s;
+        }
+        
+        .chart-action-btn:hover {
             background: #667eea;
             color: white;
             border-color: #667eea;
-        }
-        
-        /* 右侧面板 */
-        .sidebar-right {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        
-        .chart-container {
-            min-height: 250px;
-        }
-        
-        .chart-container canvas {
-            max-height: 250px;
         }
         
         .insight-item {
@@ -221,7 +231,17 @@
             font-size: 0.9em;
         }
         
-        /* 登录/注册弹窗 */
+        .history-item {
+            padding: 10px;
+            background: #16213e;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .history-item:hover { background: #1a1a4e; border-left: 2px solid #667eea; }
+        
         .modal {
             display: none;
             position: fixed;
@@ -235,9 +255,7 @@
             align-items: center;
         }
         
-        .modal.active {
-            display: flex;
-        }
+        .modal.active { display: flex; }
         
         .modal-content {
             background: #1a1a2e;
@@ -245,22 +263,14 @@
             border-radius: 15px;
             border: 1px solid #2a2a4a;
             width: 400px;
+            max-height: 90vh;
+            overflow-y: auto;
         }
         
-        .modal-content h2 {
-            color: #667eea;
-            margin-bottom: 20px;
-        }
+        .modal-content h2 { color: #667eea; margin-bottom: 20px; }
         
-        .form-group {
-            margin-bottom: 15px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: #888;
-        }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; color: #888; }
         
         .form-group input {
             width: 100%;
@@ -271,12 +281,7 @@
             color: #e0e0e0;
         }
         
-        .form-actions {
-            display: flex;
-            gap: 10px;
-            justify-content: flex-end;
-            margin-top: 20px;
-        }
+        .form-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }
         
         .btn {
             padding: 10px 20px;
@@ -284,18 +289,13 @@
             border-radius: 8px;
             cursor: pointer;
             font-size: 0.9em;
+            transition: opacity 0.3s;
         }
         
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-        }
-        
-        .btn-secondary {
-            background: #16213e;
-            color: #888;
-            border: 1px solid #2a2a4a;
-        }
+        .btn:hover { opacity: 0.9; }
+        .btn-primary { background: linear-gradient(135deg, #667eea, #764ba2); color: white; }
+        .btn-secondary { background: #16213e; color: #888; border: 1px solid #2a2a4a; }
+        .btn-danger { background: #e74c3c; color: white; }
         
         .user-info {
             display: flex;
@@ -313,26 +313,55 @@
             align-items: center;
             justify-content: center;
             font-weight: bold;
+            font-size: 1.2em;
         }
         
-        /* 滚动条 */
-        ::-webkit-scrollbar {
-            width: 5px;
+        .report-modal-content {
+            width: 700px;
+            max-width: 95vw;
         }
         
-        ::-webkit-scrollbar-track {
-            background: #16213e;
+        .report-preview {
+            background: white;
+            color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            max-height: 400px;
+            overflow-y: auto;
+            margin: 15px 0;
+            font-size: 0.9em;
+            line-height: 1.8;
         }
         
-        ::-webkit-scrollbar-thumb {
-            background: #2a2a4a;
-            border-radius: 5px;
+        .report-preview h2 { color: #667eea; margin-bottom: 15px; }
+        .report-preview table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+        .report-preview th, .report-preview td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        .report-preview th { background: #667eea; color: white; }
+        
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            background: #667eea;
+            color: white;
+            border-radius: 8px;
+            z-index: 2000;
+            animation: slideIn 0.3s ease;
+            font-size: 0.9em;
         }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #16213e; }
+        ::-webkit-scrollbar-thumb { background: #2a2a4a; border-radius: 5px; }
         
         @media (max-width: 1024px) {
-            .main-layout {
-                grid-template-columns: 1fr;
-            }
+            .main-layout { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -357,7 +386,7 @@
                     <input type="file" id="fileInput" accept=".csv,.xlsx,.xls,.json" style="display:none" onchange="uploadFile()">
                     <button class="upload-btn" onclick="document.getElementById('fileInput').click()">📤 上传数据文件</button>
                     <div class="file-list" id="fileList">
-                        <p style="color:#666; font-size:0.9em;">暂无文件，请上传</p>
+                        <p style="color:#666; font-size:0.9em;">请先登录后上传文件</p>
                     </div>
                 </div>
             </div>
@@ -376,10 +405,10 @@
                         比如：
                         • "帮我分析这份销售数据的趋势"
                         • "数据中有没有异常值？"
-                        • "生成一份数据摘要报告"
+                        • "生成一份数据分析报告"
                         • "这些数据适合用什么图表展示？"
                         
-                        让我们开始吧！📊
+                        分析完成后，可以下载图表和报告哦！📊📥
                     </div>
                 </div>
                 <div class="chat-input-area">
@@ -391,15 +420,20 @@
                     <span class="quick-action" onclick="quickAsk('检测数据中的异常值')">🔍 异常检测</span>
                     <span class="quick-action" onclick="quickAsk('分析数据趋势和规律')">📈 趋势分析</span>
                     <span class="quick-action" onclick="quickAsk('推荐最佳可视化方案')">🎨 可视化建议</span>
-                    <span class="quick-action" onclick="quickAsk('生成数据分析报告')">📝 生成报告</span>
+                    <span class="quick-action" onclick="quickAsk('生成完整的数据分析报告')">📝 生成报告</span>
                 </div>
             </div>
             
             <!-- 右侧面板 -->
             <div class="sidebar-right">
-                <div class="card chart-container">
+                <div class="card chart-container" id="chartCard">
                     <h3>📊 可视化图表</h3>
                     <canvas id="dataChart"></canvas>
+                    <div class="chart-actions" id="chartActions" style="display:none;">
+                        <button class="chart-action-btn" onclick="downloadChartPNG()">📥 下载PNG</button>
+                        <button class="chart-action-btn" onclick="downloadChartPDF()">📄 下载PDF</button>
+                        <button class="chart-action-btn" onclick="copyChartToClipboard()">📋 复制图表</button>
+                    </div>
                 </div>
                 
                 <div class="card">
@@ -451,7 +485,7 @@
                 </div>
                 <div class="form-group">
                     <label>密码</label>
-                    <input type="password" id="regPassword" placeholder="请输入密码">
+                    <input type="password" id="regPassword" placeholder="至少6位密码">
                 </div>
                 <div class="form-actions">
                     <button class="btn btn-secondary" onclick="hideLogin()">取消</button>
@@ -463,12 +497,36 @@
             </div>
         </div>
     </div>
+    
+    <!-- 报告预览弹窗 -->
+    <div class="modal" id="reportModal">
+        <div class="modal-content report-modal-content">
+            <h2>📝 数据分析报告</h2>
+            <div class="report-preview" id="reportPreview"></div>
+            <div class="form-actions">
+                <button class="btn btn-secondary" onclick="hideReport()">关闭</button>
+                <button class="btn btn-primary" onclick="downloadReportPDF()">📄 下载PDF报告</button>
+                <button class="btn btn-primary" onclick="downloadReportHTML()">🌐 下载HTML报告</button>
+            </div>
+        </div>
+    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
     <script>
+        // ============ 全局变量 ============
         let currentUser = null;
         let currentFileId = null;
         let chartInstance = null;
+        let lastAnalysisResult = null;
+        let uploadAbortController = null;
+        
+        // ============ Toast 提示 ============
+        function showToast(message, duration = 3000) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), duration);
+        }
         
         // ============ 用户认证 ============
         function showLogin() {
@@ -492,9 +550,18 @@
         }
         
         async function register() {
-            const username = document.getElementById('regUsername').value;
-            const email = document.getElementById('regEmail').value;
+            const username = document.getElementById('regUsername').value.trim();
+            const email = document.getElementById('regEmail').value.trim();
             const password = document.getElementById('regPassword').value;
+            
+            if (!username || !email || !password) {
+                alert('请填写所有字段');
+                return;
+            }
+            if (password.length < 6) {
+                alert('密码至少6位');
+                return;
+            }
             
             try {
                 const res = await fetch('/api/auth/register', {
@@ -510,17 +577,24 @@
                     updateUserUI();
                     hideLogin();
                     loadFiles();
+                    loadHistory();
+                    showToast('注册成功！欢迎使用AI数据分析师 🎉');
                 } else {
                     alert(data.error || '注册失败');
                 }
             } catch (err) {
-                alert('网络错误');
+                alert('网络错误，请稍后再试');
             }
         }
         
         async function login() {
-            const email = document.getElementById('loginEmail').value;
+            const email = document.getElementById('loginEmail').value.trim();
             const password = document.getElementById('loginPassword').value;
+            
+            if (!email || !password) {
+                alert('请填写邮箱和密码');
+                return;
+            }
             
             try {
                 const res = await fetch('/api/auth/login', {
@@ -536,11 +610,13 @@
                     updateUserUI();
                     hideLogin();
                     loadFiles();
+                    loadHistory();
+                    showToast('登录成功！');
                 } else {
                     alert(data.error || '登录失败');
                 }
             } catch (err) {
-                alert('网络错误');
+                alert('网络错误，请稍后再试');
             }
         }
         
@@ -552,7 +628,7 @@
                         <div class="user-avatar">${currentUser.username[0].toUpperCase()}</div>
                         <div>
                             <strong>${currentUser.username}</strong>
-                            <br><small style="color:#888;">${currentUser.plan_type} 计划</small>
+                            <br><small style="color:#888;">${currentUser.plan_type || 'free'} 计划</small>
                         </div>
                     </div>
                     <button class="btn btn-secondary" onclick="logout()" style="width:100%;">退出登录</button>
@@ -562,15 +638,21 @@
         
         function logout() {
             currentUser = null;
+            currentFileId = null;
             localStorage.removeItem('token');
             localStorage.removeItem('user');
             document.getElementById('userSection').innerHTML = `
                 <button class="upload-btn" onclick="showLogin()">登录 / 注册</button>
             `;
-            document.getElementById('fileList').innerHTML = '<p style="color:#666;">请先登录</p>';
+            document.getElementById('fileList').innerHTML = '<p style="color:#666;">请先登录后上传文件</p>';
+            document.getElementById('historyList').innerHTML = '<p style="color:#666;">暂无分析记录</p>';
+            document.getElementById('insightsList').innerHTML = '<p style="color:#666;">分析数据后将在此显示关键发现</p>';
+            if (chartInstance) { chartInstance.destroy(); chartInstance = null; }
+            document.getElementById('chartActions').style.display = 'none';
+            showToast('已退出登录');
         }
         
-        // ============ 文件上传 ============
+        // ============ 文件上传（支持取消） ============
         async function uploadFile() {
             if (!currentUser) {
                 alert('请先登录');
@@ -581,23 +663,82 @@
             const file = fileInput.files[0];
             if (!file) return;
             
+            const allowedExts = ['.csv', '.xlsx', '.xls', '.json'];
+            const ext = '.' + file.name.split('.').pop().toLowerCase();
+            if (!allowedExts.includes(ext)) {
+                alert('不支持的文件格式，请上传 CSV、Excel 或 JSON 文件');
+                fileInput.value = '';
+                return;
+            }
+            
+            if (file.size > 10 * 1024 * 1024) {
+                alert('文件大小不能超过10MB');
+                fileInput.value = '';
+                return;
+            }
+            
             const formData = new FormData();
             formData.append('file', file);
             formData.append('userId', currentUser.id);
             
+            uploadAbortController = new AbortController();
+            
+            const uploadMsg = addMessage(`📤 正在上传文件 "${file.name}"...`, 'ai');
+            const cancelBtn = document.createElement('button');
+            cancelBtn.textContent = '✕ 取消上传';
+            cancelBtn.className = 'msg-action-btn';
+            cancelBtn.style.cssText = 'background:rgba(231,76,60,0.3); border-color:#e74c3c; color:#e74c3c;';
+            cancelBtn.onclick = cancelUpload;
+            uploadMsg.appendChild(cancelBtn);
+            
             try {
                 const res = await fetch('/api/upload', {
                     method: 'POST',
-                    body: formData
+                    body: formData,
+                    signal: uploadAbortController.signal
                 });
+                
                 const data = await res.json();
+                uploadMsg.remove();
+                
                 if (data.success) {
-                    addMessage(`✅ 文件 "${data.file.file_name}" 上传成功！共 ${data.file.row_count} 行，${data.file.column_count} 列数据。`, 'ai');
+                    const fileInfo = data.file;
+                    const preview = data.preview;
+                    
+                    addMessage(`✅ 文件上传成功！
+📄 文件名：${fileInfo.file_name}
+📊 数据量：${fileInfo.row_count} 行 × ${fileInfo.column_count} 列
+🔢 列名：${preview.columns.join(', ')}
+
+👀 前3行预览：
+${JSON.stringify(preview.rows.slice(0, 3), null, 2)}
+
+💡 现在你可以问我任何关于这份数据的问题了！`, 'ai');
+                    
                     loadFiles();
-                    currentFileId = data.file.id;
+                    currentFileId = fileInfo.id;
+                    showToast('文件上传成功！');
+                } else {
+                    addMessage(`❌ 上传失败：${data.error}`, 'ai');
                 }
             } catch (err) {
-                alert('上传失败');
+                if (err.name === 'AbortError') {
+                    addMessage('🚫 上传已取消', 'ai');
+                } else {
+                    uploadMsg.remove();
+                    addMessage('❌ 上传失败，请重试', 'ai');
+                }
+            } finally {
+                uploadAbortController = null;
+                fileInput.value = '';
+            }
+        }
+        
+        function cancelUpload() {
+            if (uploadAbortController) {
+                uploadAbortController.abort();
+                uploadAbortController = null;
+                showToast('正在取消上传...');
             }
         }
         
@@ -610,8 +751,8 @@
                 if (data.success && data.files.length > 0) {
                     document.getElementById('fileList').innerHTML = data.files.map(f => `
                         <div class="file-item ${f.id === currentFileId ? 'active' : ''}" onclick="selectFile(${f.id})">
-                            📄 ${f.file_name}
-                            <br><small style="color:#888;">${f.row_count}行 × ${f.column_count}列</small>
+                            <span>📄 ${f.file_name}<br><small style="color:#888;">${f.row_count}行 × ${f.column_count}列</small></span>
+                            <span class="delete-btn" onclick="event.stopPropagation(); deleteFile(${f.id})" title="删除文件">🗑️</span>
                         </div>
                     `).join('');
                     if (!currentFileId && data.files[0]) {
@@ -619,13 +760,27 @@
                     }
                 }
             } catch (err) {
-                console.error('加载文件失败');
+                console.error('加载文件失败:', err);
             }
         }
         
         function selectFile(fileId) {
             currentFileId = fileId;
             loadFiles();
+            showToast('已选择文件');
+        }
+        
+        async function deleteFile(fileId) {
+            if (!confirm('确定要删除这个文件吗？')) return;
+            
+            try {
+                await fetch(`/api/files/${fileId}`, { method: 'DELETE' });
+                if (currentFileId === fileId) currentFileId = null;
+                loadFiles();
+                showToast('文件已删除');
+            } catch (err) {
+                alert('删除失败');
+            }
         }
         
         // ============ AI对话 ============
@@ -658,19 +813,37 @@
                 loadingDiv.remove();
                 
                 if (data.success) {
-                    addMessage(data.analysis, 'ai');
-                    if (data.chartConfig) {
+                    lastAnalysisResult = data;
+                    
+                    // 添加带操作按钮的消息
+                    const msgDiv = addMessage(data.analysis, 'ai');
+                    
+                    // 添加操作按钮
+                    const actionsDiv = document.createElement('div');
+                    actionsDiv.className = 'msg-actions';
+                    actionsDiv.innerHTML = `
+                        <button class="msg-action-btn" onclick="downloadAnalysisAsTXT('${data.recordId || Date.now()}')">📥 下载分析结果</button>
+                        <button class="msg-action-btn" onclick="generateReport()">📝 生成报告</button>
+                    `;
+                    msgDiv.appendChild(actionsDiv);
+                    
+                    if (data.chartConfig && data.chartConfig.type) {
                         updateChart(data.chartConfig);
+                        document.getElementById('chartActions').style.display = 'flex';
                     }
+                    
                     if (data.insights) {
                         updateInsights(data.insights);
                     }
+                    
+                    // 刷新历史记录
+                    loadHistory();
                 } else {
-                    addMessage('❌ 分析失败，请重试', 'ai');
+                    addMessage(`❌ 分析失败：${data.error}`, 'ai');
                 }
             } catch (err) {
                 loadingDiv.remove();
-                addMessage('❌ 网络错误', 'ai');
+                addMessage('❌ 网络错误，请重试', 'ai');
             }
         }
         
@@ -689,10 +862,37 @@
             return msgDiv;
         }
         
-        // ============ 图表更新 ============
+        // ============ 下载分析结果 ============
+        function downloadAnalysisAsTXT(recordId) {
+            if (!lastAnalysisResult || !lastAnalysisResult.analysis) {
+                showToast('没有可下载的分析结果');
+                return;
+            }
+            
+            const content = `AI数据分析师 - 分析报告\n${'='.repeat(50)}\n日期：${new Date().toLocaleString()}\n\n${lastAnalysisResult.analysis}`;
+            const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `数据分析结果_${new Date().toISOString().slice(0,10)}.txt`;
+            a.click();
+            URL.revokeObjectURL(url);
+            showToast('分析结果已下载');
+        }
+        
+        // ============ 图表相关 ============
         function updateChart(config) {
             const ctx = document.getElementById('dataChart').getContext('2d');
             if (chartInstance) chartInstance.destroy();
+            
+            const colors = [
+                'rgba(102, 126, 234, 0.7)',
+                'rgba(118, 75, 162, 0.7)',
+                'rgba(46, 204, 113, 0.7)',
+                'rgba(241, 196, 15, 0.7)',
+                'rgba(231, 76, 60, 0.7)',
+                'rgba(52, 152, 219, 0.7)'
+            ];
             
             chartInstance = new Chart(ctx, {
                 type: config.type || 'bar',
@@ -701,7 +901,7 @@
                     datasets: [{
                         label: config.title || '数据',
                         data: config.data || [],
-                        backgroundColor: 'rgba(102, 126, 234, 0.5)',
+                        backgroundColor: (config.data || []).map((_, i) => colors[i % colors.length]),
                         borderColor: '#667eea',
                         borderWidth: 1
                     }]
@@ -710,9 +910,8 @@
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
-                        legend: {
-                            labels: { color: '#e0e0e0' }
-                        }
+                        legend: { labels: { color: '#e0e0e0' } },
+                        title: { display: true, text: config.title || '数据可视化', color: '#e0e0e0' }
                     },
                     scales: {
                         y: {
@@ -728,10 +927,167 @@
             });
         }
         
+        function downloadChartPNG() {
+            if (!chartInstance) {
+                showToast('请先生成图表');
+                return;
+            }
+            
+            const canvas = document.getElementById('dataChart');
+            const link = document.createElement('a');
+            link.download = `图表_${new Date().toISOString().slice(0,10)}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+            showToast('图表PNG已下载');
+        }
+        
+        function downloadChartPDF() {
+            if (!chartInstance) {
+                showToast('请先生成图表');
+                return;
+            }
+            
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF('landscape');
+            const canvas = document.getElementById('dataChart');
+            const imgData = canvas.toDataURL('image/png');
+            
+            pdf.addImage(imgData, 'PNG', 15, 15, 270, 150);
+            pdf.save(`图表_${new Date().toISOString().slice(0,10)}.pdf`);
+            showToast('图表PDF已下载');
+        }
+        
+        async function copyChartToClipboard() {
+            if (!chartInstance) {
+                showToast('请先生成图表');
+                return;
+            }
+            
+            try {
+                const canvas = document.getElementById('dataChart');
+                const blob = await new Promise(resolve => canvas.toBlob(resolve));
+                await navigator.clipboard.write([
+                    new ClipboardItem({ 'image/png': blob })
+                ]);
+                showToast('图表已复制到剪贴板');
+            } catch (err) {
+                showToast('复制失败，请尝试下载PNG');
+            }
+        }
+        
+        // ============ 报告生成 ============
+        function generateReport() {
+            if (!lastAnalysisResult || !lastAnalysisResult.analysis) {
+                showToast('请先进行分析再生成报告');
+                return;
+            }
+            
+            const reportHTML = `
+                <h2>📊 AI数据分析报告</h2>
+                <p><strong>生成时间：</strong>${new Date().toLocaleString()}</p>
+                <hr>
+                <h3>📋 分析结果</h3>
+                <div style="white-space:pre-wrap;">${lastAnalysisResult.analysis}</div>
+                ${lastAnalysisResult.chartConfig ? `
+                <h3>📈 图表信息</h3>
+                <p>图表类型：${lastAnalysisResult.chartConfig.type}</p>
+                <p>图表标题：${lastAnalysisResult.chartConfig.title || '数据可视化'}</p>
+                ` : ''}
+                <hr>
+                <p style="color:#888;">由 AI数据分析师 自动生成</p>
+            `;
+            
+            document.getElementById('reportPreview').innerHTML = reportHTML;
+            document.getElementById('reportModal').classList.add('active');
+        }
+        
+        function hideReport() {
+            document.getElementById('reportModal').classList.remove('active');
+        }
+        
+        function downloadReportPDF() {
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF('p', 'mm', 'a4');
+            const reportElement = document.getElementById('reportPreview');
+            
+            html2canvas(reportElement, {
+                scale: 2,
+                backgroundColor: '#ffffff',
+                logging: false
+            }).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                const imgWidth = 190;
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                
+                pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight);
+                pdf.save(`数据分析报告_${new Date().toISOString().slice(0,10)}.pdf`);
+                showToast('报告PDF已下载');
+            });
+        }
+        
+        function downloadReportHTML() {
+            const reportContent = document.getElementById('reportPreview').innerHTML;
+            const fullHTML = `
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI数据分析报告</title>
+    <style>
+        body { font-family: 'Microsoft YaHei', sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; color: #333; }
+        h2 { color: #667eea; }
+        hr { border: 1px solid #eee; }
+        table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background: #667eea; color: white; }
+    </style>
+</head>
+<body>
+    ${reportContent}
+</body>
+</html>`;
+            
+            const blob = new Blob([fullHTML], { type: 'text/html;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `数据分析报告_${new Date().toISOString().slice(0,10)}.html`;
+            a.click();
+            URL.revokeObjectURL(url);
+            showToast('报告HTML已下载');
+        }
+        
+        // ============ 洞察更新 ============
         function updateInsights(insights) {
             document.getElementById('insightsList').innerHTML = `
-                <div class="insight-item">📌 ${insights.summary || '分析完成'}</div>
+                <div class="insight-item">
+                    <strong>📌 分析摘要</strong>
+                    <p style="margin-top:5px; font-size:0.85em;">${insights.summary || '分析完成'}</p>
+                </div>
             `;
+        }
+        
+        // ============ 分析历史 ============
+        async function loadHistory() {
+            if (!currentUser) return;
+            
+            try {
+                const res = await fetch(`/api/history/${currentUser.id}`);
+                const data = await res.json();
+                
+                if (data.success && data.history.length > 0) {
+                    document.getElementById('historyList').innerHTML = data.history.slice(0, 10).map(h => `
+                        <div class="history-item">
+                            <small style="color:#667eea;">📄 ${h.fileName}</small>
+                            <p style="font-size:0.8em; color:#888; margin:5px 0;">${h.query?.substring(0, 50) || '分析'}</p>
+                            <small style="color:#666;">${new Date(h.createdAt).toLocaleString()}</small>
+                        </div>
+                    `).join('');
+                }
+            } catch (err) {
+                console.error('加载历史失败:', err);
+            }
         }
         
         // ============ 初始化 ============
@@ -741,6 +1097,7 @@
             currentUser = JSON.parse(savedUser);
             updateUserUI();
             loadFiles();
+            loadHistory();
         }
     </script>
 </body>
